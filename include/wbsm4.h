@@ -13,12 +13,12 @@
 (ct)[2] = (uint8_t)((st) >>  8);\
 (ct)[3] = (uint8_t)(st)
 
-Aff32 M[32][3];
-Aff32 C[32];
-Aff32 D[32];
-Aff32 SE[4];
-Aff32 FE[4];
-uint32_t Table[32][4][256];
+extern Aff32 M[32][3];
+extern Aff32 C[32];
+extern Aff32 D[32];
+extern Aff32 SE[4];
+extern Aff32 FE[4];
+extern uint32_t Table[32][4][256];
 
 void printstate(unsigned char * in);
 void wbsm4_gen(uint8_t *key);

@@ -1,6 +1,14 @@
 #include "wbsm4.h"
 #include "sbox.h"
 
+// Global variable definitions
+Aff32 M[32][3];
+Aff32 C[32];
+Aff32 D[32];
+Aff32 SE[4];
+Aff32 FE[4];
+uint32_t Table[32][4][256];
+
 M32 L_matrix = {
     .M[0] = 0xA0202080, 
     .M[1] = 0x50101040, 
