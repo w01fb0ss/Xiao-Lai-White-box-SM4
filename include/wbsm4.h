@@ -31,5 +31,5 @@ typedef struct {
 
 
 void printstate(unsigned char * in);
-void wbsm4_gen(uint8_t *key);
+WhiteBoxLut wbsm4_gen(uint8_t *key);
 void wbsm4_encrypt(unsigned char IN[], unsigned char OUT[]);

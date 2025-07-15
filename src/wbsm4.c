@@ -54,7 +54,7 @@ void printstate(unsigned char * in)
     printf("\n");
 }
 
-void wbsm4_gen(uint8_t *key)
+WhiteBoxLut wbsm4_gen(uint8_t *key)
 {
     int i, j, x;
     Aff32 P[36];
@@ -140,6 +140,28 @@ void wbsm4_gen(uint8_t *key)
         FE[i].Mat = P_inv[35 - i].Mat;
         FE[i].Vec = P_inv[35 - i].Vec;
     }
+
+    WhiteBoxLut lut;
+
+    for (int i = 0; i < 32; i++) {
+        for (int j = 0; j < 3; j++) {
+            lut.M[i][j] = M[i][j];
+        }
+        lut.C[i] = C[i];
+        lut.D[i] = D[i];
+        for (int j = 0; j < 4; j++) {
+            for (int x = 0; x < 256; x++) {
+                lut.Table[i][j][x] = Table[i][j][x];
+            }
+        }
+    }
+
+    for (int i = 0; i < 4; i++) {
+        lut.SE[i] = SE[i];
+        lut.FE[i] = FE[i];
+    }
+
+    return lut;
 }
 
 void wbsm4_encrypt(unsigned char IN[], unsigned char OUT[])
